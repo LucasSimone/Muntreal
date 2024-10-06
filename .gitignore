@@ -1,0 +1,6 @@
+*.sqlite3
+*.vs
+.env
+__pycache__/
+*.py[cod]
+master-template-venv

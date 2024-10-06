@@ -1,0 +1,79 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<div class="container-fluid">
+    <footer class="my-4 border-top">
+
+        <div class="d-flex flex-wrap justify-content-lg-evenly justify-content-md-between align-items-top py-3">
+            <div class="col-6 col-md-2 mb-3">
+                <a class="nav-link text-muted" href="{% url 'site-home' %}"><h5>BRAND</h5></a>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="{% url 'site-home' %}" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="{% url 'site-contact' %}" class="nav-link p-0 text-muted">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-2 mb-3">
+                <h5>Who We Are</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="{% url 'site-about' %}" class="nav-link p-0 text-muted">About</a></li>
+                    <li class="nav-item mb-2"><a href="{% url 'site-testimonials' %}" class="nav-link p-0 text-muted">Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-2 mb-3">
+                <h5></h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">French</a></li>
+                </ul>
+            </div>
+            <!-- <div class="col-md-4">
+                <form class="w-100" method="post">
+                    {% csrf_token %}
+                    <h5>Subscribe to our newsletter</h5>
+                    <p>Get inside information of upcoming sales and events.</p>
+                    {% for new in subscribe_form %}
+                        {% if field.errors %}
+                            <div class="alert alert-dismissible fade show alert-info" role="alert">
+                                {% for error in  new.errors %}{{ error }}{% endfor %}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                                <label class="control-label">{{ new.label }}</label> 
+                                <div class="controls">{{ new }}</div>
+                                <button class="btn btn-primary" name="subscribe_form" type="submit">Subscribe</button>
+                            </div>
+                        {% else %}
+                            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                                <label class="control-label">{{ new.label }}</label> 
+                                <div class="controls">{{ new }}</div>
+                                <button class="btn btn-primary" name="subscribe_form" type="submit">Subscribe</button>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </form>
+            </div> -->
+
+            <div class="col-lg-3 col-md-4 mb-3" id="subscribe_form">
+                <h5>Subscribe to our newsletter</h5>
+                <p>Get inside information of upcoming sales and events.</p>
+                {% crispy subscribe_form %}
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
+            <div class="col-md-4 d-flex align-items-center">
+                <a href="{% url 'site-home' %}" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                    <img class="bi" width="24" height="24" src = "{% static 'main_site/img/logos/pied-piper.svg' %}">
+                </a>
+                <span class="mb-3 mb-md-0 text-muted">© {% now "Y" %} Company, Inc</span>
+            </div>
+        
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-muted" href="#"><img class="bi" width="24" height="24" src = "{% static 'main_site/img/logos/instagram.svg' %}"></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><img class="bi" width="24" height="24" src = "{% static 'main_site/img/logos/facebook.svg' %}"></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><img class="bi" width="24" height="24" src = "{% static 'main_site/img/logos/linkedin.svg' %}"></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><img class="bi" width="24" height="24" src = "{% static 'main_site/img/logos/x-twitter.svg' %}"></a></li>
+            </ul>
+        </div>
+
+
+    </footer>
+  </div>

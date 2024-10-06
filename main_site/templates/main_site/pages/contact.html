@@ -1,0 +1,56 @@
+
+{% extends "main_site/master.html"%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Contact Page</h1>
+
+    <p>Phone number</p>
+    <p>Email</p>
+    <p>Address</p>
+    <p>Hours</p>
+
+    <h2>Enter your feedback below</h2>
+    <!-- Simple django form -->
+    <!-- <form action="" medthod="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='submit'>Submit</button>
+    </form> -->
+    
+
+    <!-- Bootstrap styled form - Look into django-crispy-forms(https://github.com/django-crispy-forms/django-crispy-forms) -->
+    <!-- <form class="form-horizontal" method="post">{% csrf_token %}
+        <fieldset>
+            {% for field in form %}
+                {% if field.errors %}
+                    <div class="control-group error">
+                        <label class="control-label">{{ field.label }}</label> 
+                        <div class="controls">{{ field }}
+                            <span class="help-inline">
+                                {% for error in  field.errors %}{{ error }}{% endfor %}
+                            </span>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="control-group">
+                        <label class="control-label">{{ field.label }}</label> 
+                        <div class="controls">{{ field }}
+                            {% if field.help_text %}
+                                <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </fieldset>
+        <div class="form-actions">
+            <button type="submit" name="contact_form" class="btn btn-primary" >Submit</button>
+        </div>
+    </form> -->
+
+    {% crispy form %}
+    
+    
+{% endblock content %}
