@@ -3,4 +3,5 @@
 .env
 __pycache__/
 *.py[cod]
-master-template-venv
+muntreal-venv
+media/

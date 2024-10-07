@@ -40,7 +40,7 @@ class DeploymentAdmin(admin.ModelAdmin):
         return obj.mailing_list.contact_list.count()
     
 
-admin.site.register(Contact, ContactAdmin)
-admin.site.register(EmailTemplate, EmailTemplateAdmin)
-admin.site.register(MailingList, MailingListAdmin)
-admin.site.register(Deployment, DeploymentAdmin)
+# admin.site.register(Contact, ContactAdmin)
+# admin.site.register(EmailTemplate, EmailTemplateAdmin)
+# admin.site.register(MailingList, MailingListAdmin)
+# admin.site.register(Deployment, DeploymentAdmin)

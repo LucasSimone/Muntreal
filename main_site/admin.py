@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Feedback, Testimonial
+from .models import Feedback, Testimonial, Image, Person
 
 
 # Example of how to edit Model options in the admin
@@ -80,5 +80,20 @@ class TestimonialAdmin(admin.ModelAdmin):
 
 # admin.site.register(EmailTemplate, EmailTemplateAdmin)
 # admin.site.register(Contact, ContactAdmin)
-admin.site.register(Testimonial, TestimonialAdmin)
-admin.site.register(Feedback, FeedbackAdmin)
+# admin.site.register(Testimonial, TestimonialAdmin)
+# admin.site.register(Feedback, FeedbackAdmin)
+
+
+class ImageAdmin(admin.ModelAdmin):
+    search_fields = ['date', 'location', 'people', 'image']
+    list_display = ('id','image', 'date', 'location')
+    list_filter = ('date','people')
+
+class PersonAdmin(admin.ModelAdmin):
+    search_fields = ['name',]
+    list_display = ('name',)
+    list_filter = ('name',)
+    ordering = ('name',)
+
+admin.site.register(Person, PersonAdmin)
+admin.site.register(Image, ImageAdmin)

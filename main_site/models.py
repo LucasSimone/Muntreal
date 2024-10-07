@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
 
     
 # # Example of a Model creation with different options
@@ -22,6 +21,37 @@ from django.contrib.auth.models import User
 #     # Sets a custom table name
 #     class Meta:
 #         verbose_name_plural = "Name"
+
+class Person(models.Model):
+    name = models.CharField(blank=True, default=None,max_length=255)
+
+    class Meta:
+        verbose_name_plural = "People"
+
+    def __str__(self):
+        return self.name
+
+
+class Image(models.Model):
+
+    # Below is a char field with set choices
+    people_choices = {
+        "type": "array",
+        "people": {
+            "type": "string",
+            "choices": ["Alexi", "Atharva", "Cozzy", "Gagan", "Harsh", "Jamian", "Lucas", "Marco", "Matt", "Scott", "Tom"],
+        },
+    }
+
+    image = models.ImageField(upload_to='images')
+    date = models.DateTimeField(blank=True)
+    location = models.CharField(blank=True, default=None, max_length=255)
+    people = models.ManyToManyField(Person)
+
+
+    # Sets a custom table name
+    class Meta:
+        verbose_name_plural = "Images"
 
 
 class Feedback(models.Model):

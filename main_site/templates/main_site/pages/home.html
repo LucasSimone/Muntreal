@@ -1,6 +1,13 @@
 
 {% extends "main_site/master.html"%}
+
+{% load static %}
+
 {% block content %}
-    <h1>Home Page</h1>
-    <div style="margin-bottom: 1000px;"></div>
+    {% for image in images %}
+        <img src="{% get_media_prefix %}{{ image.image }}">
+        <p>Date: {{ image.date }}</p>
+        <p>Location: {{ image.location }}</p>
+        <p>People: {% for person in image.people.all %} {{ person.name }} {% endfor %}</p>
+    {% endfor %}
 {% endblock content %}
