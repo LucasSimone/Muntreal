@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.html import mark_safe
+from django.conf import settings
 
     
 # # Example of a Model creation with different options
@@ -31,27 +33,27 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 
+def my_func():
+    print("YEs")
 
 class Image(models.Model):
 
-    # Below is a char field with set choices
-    people_choices = {
-        "type": "array",
-        "people": {
-            "type": "string",
-            "choices": ["Alexi", "Atharva", "Cozzy", "Gagan", "Harsh", "Jamian", "Lucas", "Marco", "Matt", "Scott", "Tom"],
-        },
-    }
-
-    image = models.ImageField(upload_to='images')
-    date = models.DateTimeField(blank=True)
-    location = models.CharField(blank=True, default=None, max_length=255)
-    people = models.ManyToManyField(Person)
+    image = models.ImageField(upload_to='images',default=my_func)
+    date = models.DateTimeField(blank=True, null=True)
+    location = models.CharField(blank=True, null=True, default=None, max_length=255)
+    people = models.ManyToManyField(Person,related_name='model',blank=True,)
+    photographer = models.ManyToManyField(Person,related_name='photographer',blank=True,)
+    camera = models.CharField(blank=True, null=True, default=None, max_length=255)
 
 
     # Sets a custom table name
     class Meta:
         verbose_name_plural = "Images"
+
+    def image_tag(self):
+            return mark_safe('<img src="%s" style="max-width:350px;max-height: 250px;" />' % (settings.MEDIA_URL + str(self.image)))
+    
+    image_tag.short_description = 'Image Preview'
 
 
 class Feedback(models.Model):

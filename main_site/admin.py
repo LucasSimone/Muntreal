@@ -85,9 +85,13 @@ class TestimonialAdmin(admin.ModelAdmin):
 
 
 class ImageAdmin(admin.ModelAdmin):
-    search_fields = ['date', 'location', 'people', 'image']
-    list_display = ('id','image', 'date', 'location')
-    list_filter = ('date','people')
+    search_fields = ['date', 'location', 'people', 'image', 'photographer', 'camera']
+    list_display = ('image_tag', 'date', 'location', 'camera')
+    list_filter = ('date','people','location', 'photographer', 'camera')
+
+    fields = [('image_tag', 'image'), 'date', 'location', 'people', 'photographer', 'camera' ]
+    readonly_fields = ['image_tag']
+
 
 class PersonAdmin(admin.ModelAdmin):
     search_fields = ['name',]
